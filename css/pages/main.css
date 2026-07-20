@@ -227,6 +227,16 @@ input:disabled,
   margin: 0;
 }
 
+.case-card__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.case-card__title a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .badge-group {
   display: flex;
   flex-direction: row;
