@@ -1,0 +1,251 @@
+/* -----------------------------------------------------------------------------
+   Components
+   Based on Figma extracted tokens and structures.
+----------------------------------------------------------------------------- */
+
+/* --- Base Button --- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: var(--corners-rounded);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+
+  /* Typography */
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 16px; /* Body_3 */
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+/* --- Primary Button --- */
+.button--primary {
+  background-color: var(--surfaces-primary);
+  color: var(--icon-primary-inverse); /* Black text on light surface */
+}
+
+/* States */
+.button--primary:hover,
+.button--primary.is-hover {
+  background-color: var(--surfaces-primary-hover);
+}
+
+.button--primary:active,
+.button--primary.is-pressed {
+  background-color: var(--surfaces-primary-pressed);
+}
+
+.button--primary:disabled,
+.button--primary.is-disabled {
+  background-color: var(--surfaces-primary);
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+/* --- Secondary Button --- */
+.button--secondary {
+  background-color: var(--surfaces-secondary);
+  color: var(--text-primary); /* White text */
+}
+
+/* States */
+.button--secondary:hover,
+.button--secondary.is-hover {
+  background-color: var(--surfaces-secondary-hover);
+}
+
+.button--secondary:active,
+.button--secondary.is-pressed {
+  background-color: var(--surfaces-secondary-pressed);
+}
+
+.button--secondary:disabled,
+.button--secondary.is-disabled {
+  background-color: var(--surfaces-secondary);
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+/* --- Icon Button --- */
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0; /* Fixed size overrides padding */
+  border-radius: var(--corners-rounded);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Primary Icon Button */
+.icon-button--primary {
+  background-color: var(--surfaces-primary);
+  color: var(--icon-primary-inverse);
+}
+
+.icon-button--primary:hover,
+.icon-button--primary.is-hover {
+  background-color: var(--surfaces-primary-hover);
+}
+
+.icon-button--primary:active,
+.icon-button--primary.is-pressed {
+  background-color: var(--surfaces-primary-pressed);
+}
+
+.icon-button--primary:disabled,
+.icon-button--primary.is-disabled {
+  background-color: var(--surfaces-primary);
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+/* Secondary Icon Button */
+.icon-button--secondary {
+  background-color: transparent;
+  border: 1px solid var(--stroke-primary);
+  border-radius: var(--corners-s);
+  color: var(--icon-primary); /* White icon */
+}
+
+.icon-button--secondary:hover,
+.icon-button--secondary.is-hover {
+  background-color: var(--surfaces-secondary-hover); /* Inferred hover */
+  border-color: var(--stroke-primary); /* Maintain border? */
+}
+
+.icon-button--secondary:active,
+.icon-button--secondary.is-pressed {
+  background-color: var(--surfaces-secondary-pressed);
+}
+
+.icon-button--secondary:disabled,
+.icon-button--secondary.is-disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+/* --- Badge --- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: var(--corners-rounded);
+  border: 1.5px solid var(--stroke-primary);
+  background-color: transparent;
+  
+  /* Typography Body_2 */
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  line-height: 1.32;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--text-secondary); /* Matches extracted fill */
+}
+
+/* --- Input Component (Command Bar) --- */
+/* Structure based on Figma 'Input' 1:17840 */
+.input-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 4px;
+  padding: 12px;
+  width: 100%;
+  max-width: 628px; /* Figma width */
+  min-height: 102px;
+  
+  background-color: #171717;
+  border-radius: var(--corners-m);
+  
+  backdrop-filter: blur(var(--blur-m));
+  -webkit-backdrop-filter: blur(var(--blur-m));
+  
+  box-sizing: border-box;
+}
+
+.input-component__row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-component__row--top {
+  gap: 4px;
+}
+
+.input-component__row--top .button {
+  padding: 9px 18px;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.input-component__row--bottom {
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding-left: 0px;
+  padding-right: 12px;  /* From Figma layout_VZGQNY */
+}
+
+.input-component__row--bottom .icon-button {
+  width: 36px;
+  height: 36px;
+}
+
+.input-component__row--bottom .icon-button img {
+  width: 20px;
+  height: 20px;
+}
+
+/* The actual text input field area */
+.input-component__field {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding-left: 10px;
+  margin: 0;
+  
+  /* Typography Body-1 */
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 17px;
+  line-height: 1.52;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  
+  color: var(--text-tertiary); /* Default state */
+}
+
+.input-component__field::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* Input States */
+
+/* Typing / Filled */
+.input-component.is-typing .input-component__field,
+.input-component.is-filled .input-component__field,
+.input-component__field:not(:placeholder-shown) {
+  color: var(--text-primary);
+}
+
+/* Active (Focus) */
+.input-component.is-active,
+.input-component:focus-within {
+  /* Add a subtle border or glow if desired, 
+     but strictly following Figma extraction, no specific active style was explicit 
+     other than potentially text color change or button visibility. 
+     We'll keep the background stable. */
+  outline: none; /* Explicitly remove default outline if browser adds one */
+}

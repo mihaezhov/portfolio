@@ -1,0 +1,5 @@
+.blur-m {
+  backdrop-filter: blur(var(--blur-m));
+  -webkit-backdrop-filter: blur(var(--blur-m));
+}
+

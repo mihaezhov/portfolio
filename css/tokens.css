@@ -1,0 +1,36 @@
+:root {
+  /* Background */
+  --background-primary: #000000;
+  --background-secondary: #ffffff0d;
+
+  /* Icon */
+  --icon-primary: #ffffff;
+  --icon-primary-inverse: #000000;
+
+  /* Stroke */
+  --stroke-primary: #ffffff1a;
+  --stroke-primary-inverse: #000000;
+
+  /* Surfaces */
+  --surfaces-primary: #ffe7d8;
+  --surfaces-primary-hover: #ffede2;
+  --surfaces-primary-pressed: #ffdfca;
+  --surfaces-secondary: #ffffff14;
+  --surfaces-secondary-hover: #ffffff1f;
+  --surfaces-secondary-pressed: #ffffff0a;
+  --surfaces-tertiary: #212121e5;
+
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: #ffffffe5;
+  --text-tertiary: #ffffff52;
+
+  /* Blur */
+  --blur-m: 200px;
+
+  /* Radius */
+  --corners-s: 14px;
+  --corners-m: 32px;
+  --corners-rounded: 999px;
+}
+

@@ -1,0 +1,622 @@
+/* -----------------------------------------------------------------------------
+   Main Page Layout
+   Specific layout rules for the Home/Index page.
+   Based on Figma Frame 'Main' (7:42).
+----------------------------------------------------------------------------- */
+
+body {
+  background-color: var(--background-primary);
+  margin: 0;
+  padding: 0;
+  color: var(--text-primary);
+  font-family: "Inter", sans-serif;
+  
+  /* Custom Cursors */
+  cursor: url('../../img/cursor-default.svg'), auto;
+
+  /* Firefox Scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--surfaces-secondary-hover) var(--background-primary);
+}
+
+/* Custom Cursors for Specific Elements */
+
+/* 2. Text Input Cursor */
+/* Removed custom cursor for text inputs as requested */
+/*
+input[type="text"], 
+input[type="email"], 
+input[type="password"], 
+input[type="search"], 
+input[type="number"], 
+textarea,
+[contenteditable="true"] {
+  cursor: url('../../img/cursor-text.svg'), text;
+}
+*/
+
+/* 3. Disabled Cursor */
+button:disabled,
+input:disabled,
+.disabled,
+[aria-disabled="true"] {
+  cursor: url('../../img/cursor-disabled.svg'), not-allowed;
+}
+
+/* Custom Scrollbar for WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--surfaces-secondary-hover);
+  border-radius: 5px;
+  border: 2px solid var(--background-primary); /* Creates padding effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--surfaces-secondary-pressed);
+}
+
+.main-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- Screen 1: Hero (7:43) --- */
+.screen-1 {
+  position: relative;
+  width: 100%;
+  height: 509px; /* Fixed height from Figma */
+  background-color: var(--background-primary);
+  padding-top: 44px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.screen-1__hero-container {
+  width: 510px;
+  height: 509px;
+  position: relative;
+  z-index: 1;
+}
+
+.screen-1__media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  animation: heroFadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95); /* Slight zoom out effect */
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.screen-1__gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 185px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* --- Content Sections (Screen 2+) --- */
+/* Reusable layout pattern based on Figma 'Screen' frames */
+.section-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 64px clamp(40px, calc((100vw - 960px) / 2), 480px) 0;
+}
+
+/* Screen 7 specific padding for bottom spacing */
+#screen-7 .section-content {
+  padding-bottom: 164px; /* From Figma layout_QMZGI2 */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 960px; /* Effective width (1920 - 480*2) */
+  gap: 64px; /* Vertical gap between blocks */
+}
+
+/* --- Text Groups --- */
+.text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.text-group__title,
+.text-group__subtitle {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.text-group__subtitle {
+  color: var(--text-primary);
+  opacity: 0.5;
+}
+
+/* --- Trusted By --- */
+.trusted-by {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.5;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  width: max-content;
+}
+
+.trusted-by__text {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.trusted-by__logo {
+  display: block;
+  flex-shrink: 0;
+  position: relative;
+  top: -1px;
+}
+
+/* --- Dividers --- */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--stroke-primary);
+  border: none;
+  margin: 0;
+}
+
+/* --- Case Cards --- */
+.case-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.case-card__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.case-card__text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* From Figma layout_YG2PTU */
+  max-width: 70%; /* Prevent text from crowding the button */
+}
+
+.case-card__text-group--wide {
+  max-width: 82%;
+}
+
+.case-card__title {
+  margin: 0;
+}
+
+.badge-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Image Grid Layouts */
+.image-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Layout PJYE2B */
+  width: 100%;
+}
+
+.image-group-row {
+  display: flex;
+  flex-direction: row;
+  gap: 8px; /* Layout 0VLXM1 */
+  width: 100%;
+}
+
+.image-group-row > .case-card__image-container {
+  flex: 1; /* Distribute space evenly */
+}
+
+.case-card__image-container {
+  width: 100%;
+  height: auto;
+  aspect-ratio: unset;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 32px;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.case-card__image-container--video {
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.case-card__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.case-card__image-container--video .case-card__image {
+  height: 100%;
+  object-fit: contain;
+}
+
+.case-card__image-container--tall {
+  height: auto;
+  aspect-ratio: unset;
+}
+
+/* --- Footer (Screen 7) --- */
+.footer-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+}
+
+.sources-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px 10px 10px;
+  border: 1.5px solid var(--stroke-primary);
+  border-radius: 14px;
+  height: 44px;
+  box-sizing: border-box;
+}
+
+.sources-badge__images {
+  display: flex;
+  align-items: center;
+  gap: -6px; /* Overlap */
+}
+
+.sources-badge__img {
+  width: 20px;
+  height: 20px;
+  border-radius: 8px;
+  background-color: var(--background-secondary);
+  border: 2px solid #000; /* Stroke from Figma */
+  object-fit: cover;
+  margin-left: -6px;
+}
+
+.sources-badge__img:first-child {
+  margin-left: 0;
+}
+
+.sources-badge__text {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  line-height: 1.32;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+/* --- Sticky Input Bar --- */
+@keyframes stickyBarFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 100px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.sticky-input-bar {
+  position: fixed;
+  bottom: 12px; /* Visual spacing from bottom edge */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 628px; /* Matches Component width */
+  z-index: 100;
+  animation: stickyBarFadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+  opacity: 0;
+}
+
+/* --- Progressive Blur Overlays (Multi-layer) --- */
+.blur-layer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  /* All layers share the same height, the mask controls visibility */
+  height: 150px; 
+}
+
+/* -- Top Layers -- */
+.blur-layer--top { top: 0; }
+
+/* Layer 1 */
+.blur-layer--top.blur-layer--1 {
+  z-index: 91;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  mask-image: linear-gradient(to top, rgba(0,0,0,0) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,0) 50%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,0) 50%);
+}
+
+/* Layer 2 */
+.blur-layer--top.blur-layer--2 {
+  z-index: 92;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  mask-image: linear-gradient(to top, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 62.5%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 62.5%);
+}
+
+/* Layer 3 */
+.blur-layer--top.blur-layer--3 {
+  z-index: 93;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  mask-image: linear-gradient(to top, rgba(0,0,0,0) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,0) 75%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,0) 75%);
+}
+
+/* Layer 4 */
+.blur-layer--top.blur-layer--4 {
+  z-index: 94;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  mask-image: linear-gradient(to top, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 87.5%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 87.5%);
+}
+
+/* Layer 5 */
+.blur-layer--top.blur-layer--5 {
+  z-index: 95;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  mask-image: linear-gradient(to top, rgba(0,0,0,0) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,0) 100%);
+}
+
+/* Layer 6 */
+.blur-layer--top.blur-layer--6 {
+  z-index: 96;
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  mask-image: linear-gradient(to top, rgba(0,0,0,0) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,1) 100%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,1) 100%);
+}
+
+
+/* -- Bottom Layers -- */
+.blur-layer--bottom { bottom: 0; }
+
+/* Layer 1 (Bottom) - Mirror of Top Layer 1 */
+.blur-layer--bottom.blur-layer--1 {
+  z-index: 91;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,0) 50%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 12.5%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,0) 50%);
+}
+
+/* Layer 2 (Bottom) */
+.blur-layer--bottom.blur-layer--2 {
+  z-index: 92;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 62.5%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 25%, rgba(0,0,0,1) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 62.5%);
+}
+
+/* Layer 3 (Bottom) */
+.blur-layer--bottom.blur-layer--3 {
+  z-index: 93;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,0) 75%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 37.5%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,0) 75%);
+}
+
+/* Layer 4 (Bottom) */
+.blur-layer--bottom.blur-layer--4 {
+  z-index: 94;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 87.5%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 87.5%);
+}
+
+/* Layer 5 (Bottom) */
+.blur-layer--bottom.blur-layer--5 {
+  z-index: 95;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 62.5%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,0) 100%);
+}
+
+/* Layer 6 (Bottom) */
+.blur-layer--bottom.blur-layer--6 {
+  z-index: 96;
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,1) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 75%, rgba(0,0,0,1) 87.5%, rgba(0,0,0,1) 100%);
+}
+
+/* =========================================
+   Mobile & Tablet Responsiveness
+   ========================================= */
+
+/* --- Tablet (Up to 1024px) --- */
+@media screen and (max-width: 1024px) {
+    .container {
+        max-width: 100%;
+        padding: 0 40px; /* Side padding */
+        gap: 48px;
+        box-sizing: border-box;
+    }
+
+    .section-content {
+        padding: 64px 0 0; /* Remove huge horizontal padding */
+        width: 100%;
+    }
+    
+    .screen-1__hero-container {
+        max-width: 100%;
+        width: 510px; /* Keep ideal width if space permits */
+    }
+}
+
+/* --- Mobile (Up to 768px) --- */
+@media screen and (max-width: 768px) {
+    
+    /* 1. General Spacing */
+    .section-content {
+        padding: 48px 0 0;
+    }
+    
+    .container {
+        padding: 0 16px;
+        gap: 40px;
+    }
+    
+    #screen-7 .section-content {
+        padding-bottom: 140px; /* Space for sticky bar */
+    }
+
+    /* 2. Hero Section */
+    .screen-1 {
+        height: auto;
+        min-height: 400px;
+        padding-top: 20px;
+        padding-bottom: 40px;
+    }
+    
+    .screen-1__hero-container {
+        width: 100%;
+        max-width: 380px; /* Slightly smaller on mobile */
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    /* 3. Text Typography Adjustments */
+    .text-group__title {
+        font-size: 24px; /* Smaller title */
+        display: block; /* Restore title */
+    }
+    
+    .case-card__title {
+        font-size: 18px;
+    }
+
+    /* 4. Case Cards Layout */
+    .case-card__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .case-card__text-group {
+        max-width: 100%;
+    }
+    
+    .badge-group {
+        width: 100%;
+    }
+
+    /* 5. Image Grid - Stack Columns */
+    .image-group-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .case-card__image-container {
+        height: auto;
+        aspect-ratio: unset;
+        border-radius: 20px;
+    }
+
+    .case-card__image-container--video {
+        aspect-ratio: 16 / 9;
+    }
+    
+    .case-card__image-container--tall {
+        height: auto;
+        aspect-ratio: unset;
+    }
+
+    /* 6. Footer (Keep row layout like desktop) */
+    .footer-row {
+        flex-direction: row; 
+        align-items: center;
+        justify-content: space-between; /* 3 sources left, likes right */
+        gap: 12px;
+    }
+    
+    .action-buttons {
+        width: auto;
+        justify-content: flex-end;
+    }
+
+    /* 7. Sticky Input Bar (Restore buttons & layout) */
+    .sticky-input-bar {
+        width: calc(100% - 32px);
+        bottom: 16px;
+        max-width: 100%;
+    }
+    
+    .input-component__row--top {
+        display: flex; /* Show buttons again */
+        flex-wrap: wrap; /* Allow wrapping if needed */
+        justify-content: left; /* Center buttons */
+        gap: 8px;
+    }
+}
